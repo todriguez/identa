@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Enter Your Identity Details</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="name-tab" data-toggle="tab" href="#name" role="tab" aria-controls="name" aria-selected="true">Name & DOB</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="false">Address</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="parents-tab" data-toggle="tab" href="#parents" role="tab" aria-controls="parents" aria-selected="false">Parents & Nationality</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="questions-tab" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">Secret Questions</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="name" role="tabpanel" aria-labelledby="name-tab">
+                <form id="nameForm" class="mt-3" onsubmit="submitSection('nameForm'); return false;">
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" class="form-control" id="first_name" name="identity_portfolio[FirstName]">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" class="form-control" id="last_name" name="identity_portfolio[LastName]">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" class="form-control" id="dob" name="identity_portfolio[DOB]">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                <form id="addressForm" class="mt-3" onsubmit="submitSection('addressForm'); return false;">
+                    <div class="form-group">
+                        <label for="house_number">House Number:</label>
+                        <input type="text" class="form-control" id="house_number" name="identity_portfolio[HouseNumber]">
+                    </div>
+                    <div class="form-group">
+                        <label for="street_address">Street Address:</label>
+                        <input type="text" class="form-control" id="street_address" name="identity_portfolio[StreetAddress]">
+                    </div>
+                    <div class="form-group">
+                        <label for="suburb">Suburb:</label>
+                        <input type="text" class="form-control" id="suburb" name="identity_portfolio[Suburb]">
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode">Postcode:</label>
+                        <input type="text" class="form-control" id="postcode" name="identity_portfolio[Postcode]">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <form id="contactForm" class="mt-3" onsubmit="submitSection('contactForm'); return false;">
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" class="form-control" id="phone" name="identity_portfolio[Phone]">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="identity_portfolio[Email]">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="parents-tab">
+                <form id="parentsForm" class="mt-3" onsubmit="submitSection('parentsForm'); return false;">
+                    <div class="form-group">
+                        <label for="father_first_name">Father's First Name:</label>
+                        <input type="text" class="form-control" id="father_first_name" name="identity_portfolio[FatherFirstName]">
+                    </div>
+                    <div class="form-group">
+                        <label for="father_last_name">Father's Last Name:</label>
+                        <input type="text" class="form-control" id="father_last_name" name="identity_portfolio[FatherLastName]">
+                    </div>
+                    <div class="form-group">
+                        <label for="father_dob">Father's Date of Birth:</label>
+                        <input type="date" class="form-control" id="father_dob" name="identity_portfolio[FatherDOB]">
+                    </div>
+                    <div class="form-group">
+                        <label for="mother_first_name">Mother's First Name:</label>
+                        <input type="text" class="form-control" id="mother_first_name" name="identity_portfolio[MotherFirstName]">
+                    </div>
+                    <div class="form-group">
+                        <label for="mother_last_name">Mother's Last Name:</label>
+                        <input type="text" class="form-control" id="mother_last_name" name="identity_portfolio[MotherLastName]">
+                    </div>
+                    <div class="form-group">
+                        <label for="mother_dob">Mother's Date of Birth:</label>
+                        <input type="date" class="form-control" id="mother_dob" name="identity_portfolio[MotherDOB]">
+                    </div>
+                    <div class="form-group">
+                        <label for="nationality">Nationality:</label>
+                        <input type="text" class="form-control" id="nationality" name="identity_portfolio[Nationality]">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tab">
+                <form id="questionsForm" class="mt-3" onsubmit="submitSection('questionsForm'); return false;">
+                    <div class="form-group">
+                        <label for="mother_maiden_name">Mother's Maiden Name:</label>
+                        <input type="text" class="form-control" id="mother_maiden_name" name="secret_questions[0][Answer]">
+                    </div>
+                    <div class="form-group">
+                        <label for="place_of_birth">Place of Birth:</label>
+                        <input type="text" class="form-control" id="place_of_birth" name="secret_questions[1][Answer]">
+                    </div>
+                    <div class="form-group">
+                        <label for="graduating_primary_school">Graduating Primary School:</label>
+                        <input type="text" class="form-control" id="graduating_primary_school" name="secret_questions[2][Answer]">
+                    </div>
+                    <div class="form-group">
+                        <label for="graduating_high_school">Graduating High School:</label>
+                        <input type="text" class="form-control" id="graduating_high_school" name="secret_questions[3][Answer]">
+                    </div>
+                    <div class="form-group">
+                        <label for="first_pet">First Pet:</label>
+                        <input type="text" class="form-control" id="first_pet" name="secret_questions[4][Answer]">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function submitSection(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            const data = { user_id: 'user1', identity_portfolio: {}, secret_questions: [] };
+
+            formData.forEach((value, key) => {
+                const keys = key.split('[').map(k => k.replace(']', ''));
+                if (keys[0] === 'identity_portfolio') {
+                    data.identity_portfolio[keys[1]] = value;
+                } else if (keys[0] === 'secret_questions') {
+                    const index = parseInt(keys[1]);
+                    if (!data.secret_questions[index]) data.secret_questions[index] = {};
+                    data.secret_questions[index]['Answer'] = value;
+                }
+            });
+
+            fetch('/store_identity', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => alert(JSON.stringify(data)))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
