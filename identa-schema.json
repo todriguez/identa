@@ -1,8 +1,4 @@
-import hashlib
-import json
-import os
-
-schema = {
+{
   "version": "1.0",
   "fields": [
     {"index": 1, "name": "FirstName"},
@@ -28,11 +24,3 @@ schema = {
     {"index": 21, "name": "FirstPet"}
   ]
 }
-
-schema_json = json.dumps(schema, sort_keys=True)
-checksum = hashlib.sha256(schema_json.encode()).hexdigest()
-print(f"Schema Checksum: {checksum}")
-
-# Save the schema to a file
-schema_file = os.path.join(os.path.dirname(__file__), 'identa-schema.json')
-with open(schema_file, 'w') as

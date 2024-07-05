@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Path for storing data
 IDENTITY_FILE = 'data.json'
-SCHEMA_FILE = 'schema.json'
+SCHEMA_FILE = 'identa-schema.json'
 
 # Load schema
 try:
@@ -46,8 +46,9 @@ def hash_value(value):
     return hashlib.sha256(value.encode()).hexdigest()
 
 def validate_partial_data(data, schema_fields):
+    field_names = [field["name"] for field in schema_fields]
     for field in data:
-        if field not in schema_fields:
+        if field not in field_names:
             raise ValueError(f"Field '{field}' is not recognized by the schema.")
     return True
 
@@ -101,11 +102,12 @@ def store_identity():
 
         # Handle secret questions
         if secret_questions:
-            static_questions = [
-                "MotherMaidenName", "PlaceOfBirth", "GraduatingPrimarySchool",
-                "GraduatingHighSchool", "FirstPet"
-            ]
-            hashed_questions = [{static_questions[i]: hash_value(question.get('Answer', ''))} for i, question in enumerate(secret_questions)]
+            try:
+                validate_partial_data({q["name"]: q["Answer"] for q in secret_questions}, schema["fields"])
+            except ValueError as e:
+                return jsonify({'error': str(e)}), 400
+
+            hashed_questions = [{schema["fields"][16+i]["name"]: hash_value(question.get('Answer', ''))} for i, question in enumerate(secret_questions)]
             user_entry["secret_questions"] = hashed_questions
 
         user_entry["timestamp"] = datetime.now().isoformat()
